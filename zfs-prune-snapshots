@@ -323,7 +323,9 @@ while read -r line; do
 
 	# print the snapshot here if `-l`
 	if $listonly; then
-		echo "$snapshot"
+		# use a readable yyyy-mm-dd hh:mm:ss display
+		created=`printf '%(%FT %T %z)T' $creation`
+		echo -e "$snapshot" "\t" "$created" "\t" "$ht"
 	fi
 
 	# we care about this dataset
